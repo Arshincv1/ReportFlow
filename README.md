@@ -1,5 +1,5 @@
 # ReportFlow
-# ReportFlow Django Project
+**ReportFlow Django Project**
 
 This is a Django project for task management, with the ability to submit completion reports and worked hours. It's meant to be used by Admin, SuperAdmin, and Users to manage tasks and track their completion.
 
@@ -52,10 +52,20 @@ Before setting up the project, make sure you have the following installed:
     DEBUG=True
     ```
 
-    **Note**: Replace `your-secret-key-here` with a secure key. You can generate a new secret key using [Django's secret key generator](https://django-secret-key-generator.herokuapp.com/) or use `django.core.management.utils.get_random_secret_key()`.
+    **Important Notes**:
+    - Replace `your-secret-key-here` with a secure key. 
+    - You can generate a new secret key using one of the following methods:
+      - **Option 1**: Use an online Django secret key generator like [Django Secret Key Generator](https://django-secret-key-generator.netlify.app/). (Note: Use this option carefully for personal or development use.)
+      - **Option 2**: Generate a secure key locally by running this Python command:
+        
+        ```bash
+        python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+        ```
+
+    - Set `DEBUG=True` for local development. For production, set `DEBUG=False`.
 
 5. **Run Migrations**:
-    After setting up the `.env` file, you need to apply the migrations for the database:
+    After setting up the `.env` file, apply the migrations to set up your database:
 
     ```bash
     python manage.py migrate
@@ -83,4 +93,3 @@ Before setting up the project, make sure you have the following installed:
 
 - **Don't commit** your actual `.env` file with sensitive information (like `SECRET_KEY`). It’s added to `.gitignore` to prevent it from being pushed to the repository.
 - **.env.example** is committed so others know which environment variables are required. Make sure to copy **.env.example** to **.env** and fill in the appropriate values.
-
